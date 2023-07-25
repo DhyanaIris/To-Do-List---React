@@ -1,18 +1,21 @@
 import React from 'react'
 
-const Todo = ({todo}) => {
+const Todo = ({ todo, removeTodo, completeTodo }) => {
   return (
-    <section className='todo'>
+    <section 
+      className='todo' 
+      style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
+    >
       <section className='content'>
         <p>{todo.text}</p>
         <p className='category'>({todo.category})</p>
       </section>
       <section>
-        <button>Completar</button>
-        <button>x</button>
+        <button className='complete' onClick={() => completeTodo(todo.id)} >Completar</button>
+        <button className='remove' onClick={() => removeTodo(todo.id)} >x</button>
       </section>
     </section>
   )
 }
 
-export default Todo
+export default Todo;
